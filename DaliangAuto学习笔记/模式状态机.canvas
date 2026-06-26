@@ -1,0 +1,29 @@
+﻿{
+	"nodes":[
+		{"id":"t100000000000001","type":"text","text":"## MCU 4种工作模式\n渐进式能力递增","x":95,"y":-700,"width":350,"height":80,"color":"1"},
+		{"id":"t100000000000002","type":"text","text":"## MODE_MANUAL\n脚踏板直接控制油门\n无数据通信\n基础功能验证","x":-280,"y":-500,"width":240,"height":130,"color":"3"},
+		{"id":"t100000000000003","type":"text","text":"## MODE_REMOTE\nRC遥控器输入\n伺服电机CAN控制\n数据采集前置","x":0,"y":-500,"width":240,"height":130,"color":"3"},
+		{"id":"t100000000000004","type":"text","text":"## MODE_TRAINING\n50Hz UART上传控制数据\nJetson同步录制图像+控制对","x":280,"y":-500,"width":250,"height":120,"color":"4"},
+		{"id":"t100000000000005","type":"text","text":"## MODE_FOLLOW\nJetson AI推理决策\n安全后处理\n20Hz控制指令下传","x":570,"y":-500,"width":250,"height":130,"color":"4"},
+		{"id":"t100000000000006","type":"text","text":"## 模式切换逻辑\n退出旧模式→清理\n进入新模式→初始化→更新屏幕","x":280,"y":-280,"width":250,"height":100,"color":"2"},
+		{"id":"t100000000000007","type":"text","text":"## 伺服初始化序列\n多阶段安全初始化\nEnable→限速→写零→运行","x":0,"y":-280,"width":240,"height":100,"color":"6"},
+		{"id":"t100000000000008","type":"text","text":"## Jetson模式检测\n通过帧类型判断当前模式\n超时自动回idle","x":570,"y":-280,"width":250,"height":100,"color":"6"},
+		{"id":"t100000000000009","type":"text","text":"## 安全保护\n无人检测\n摄像头超时刹车\n油门释放限制","x":120,"y":-100,"width":300,"height":120,"color":"5"},
+		{"id":"c100000000000008","type":"file","file":"DaliangAuto学习笔记/01_MCU固件_STM32F103.md","x":-100,"y":130,"width":260,"height":60,"color":"3"},
+		{"id":"c100000000000009","type":"file","file":"DaliangAuto学习笔记/06_端到端流程与架构设计哲学.md","x":190,"y":130,"width":260,"height":60,"color":"2"},
+		{"id":"c100000000000010","type":"file","file":"DaliangAuto学习笔记/02_Jetson推理端.md","x":480,"y":130,"width":260,"height":60,"color":"4"}
+	],
+	"edges":[
+		{"id":"e001","fromNode":"t100000000000001","fromSide":"bottom","toNode":"t100000000000002","toSide":"top","label":"4种模式"},
+		{"id":"e002","fromNode":"t100000000000002","fromSide":"right","toNode":"t100000000000003","toSide":"left","label":"↑ 递增"},
+		{"id":"e003","fromNode":"t100000000000003","fromSide":"right","toNode":"t100000000000004","toSide":"left","label":"↑ 50Hz上传"},
+		{"id":"e004","fromNode":"t100000000000004","fromSide":"right","toNode":"t100000000000005","toSide":"left","label":"↑ AI控制"},
+		{"id":"e005","fromNode":"t100000000000003","fromSide":"bottom","toNode":"t100000000000007","toSide":"top","label":"伺服序列"},
+		{"id":"e006","fromNode":"t100000000000004","fromSide":"bottom","toNode":"t100000000000006","toSide":"top","label":"模式转换"},
+		{"id":"e007","fromNode":"t100000000000005","fromSide":"bottom","toNode":"t100000000000008","toSide":"top","label":"AI模式检测"},
+		{"id":"e008","fromNode":"t100000000000002","fromSide":"bottom","toNode":"t100000000000009","toSide":"top","label":"手动·安全"},
+		{"id":"e009","fromNode":"t100000000000003","fromSide":"bottom","toNode":"t100000000000009","toSide":"top","label":"遥控·安全"},
+		{"id":"e010","fromNode":"t100000000000004","fromSide":"bottom","toNode":"t100000000000009","toSide":"top","label":"训练·安全"},
+		{"id":"e011","fromNode":"t100000000000005","fromSide":"bottom","toNode":"t100000000000009","toSide":"top","label":"跟随·安全"}
+	]
+}

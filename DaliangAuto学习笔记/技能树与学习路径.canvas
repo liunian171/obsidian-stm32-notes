@@ -1,0 +1,33 @@
+{
+	"nodes":[
+		{"id":"s10000000000001","type":"file","file":"DaliangAuto学习笔记/06_端到端流程与架构设计哲学.md","subpath":"# 学习路线建议","x":446,"y":-896,"width":300,"height":100,"color":"1"},
+		{"id":"s10000000000002","type":"text","text":"### 🔰 阶段0: 前置知识\n\n**必备基础:**\n- C语言基础 (指针/中断/寄存器)\n- 嵌入式基础概念\n- Python基础\n- 基础电子知识\n\n**推荐学习途径:**\n- 正点原子/野火STM32教程\n- PyTorch官方教程\n- 计算机组成原理基础","x":-296,"y":-1138,"width":300,"height":260,"color":"6"},
+		{"id":"s10000000000003","type":"file","file":"DaliangAuto学习笔记/00_项目总览.md","x":446,"y":-558,"width":300,"height":100,"color":"1"},
+		{"id":"s10000000000004","type":"file","file":"DaliangAuto学习笔记/01_MCU固件_STM32F103.md","x":-435,"y":-221,"width":280,"height":221,"color":"3"},
+		{"id":"s10000000000005","type":"file","file":"DaliangAuto学习笔记/04_通信协议详解.md","x":38,"y":-221,"width":280,"height":100,"color":"2"},
+		{"id":"s10000000000006","type":"file","file":"DaliangAuto学习笔记/02_Jetson推理端.md","x":848,"y":-221,"width":280,"height":100,"color":"4"},
+		{"id":"s10000000000007","type":"file","file":"DaliangAuto学习笔记/03_模型训练端.md","x":1320,"y":-221,"width":280,"height":100,"color":"5"},
+		{"id":"s10000000000008","type":"file","file":"DaliangAuto学习笔记/08_STM32代码精读.md","x":-435,"y":116,"width":280,"height":100,"color":"3"},
+		{"id":"s10000000000010","type":"text","text":"### 🔧 嵌入式核心技能树\n\n**STM32外设编程:**\n1. GPIO → 基础IO控制\n2. TIM (PWM/输入捕获)\n3. UART (中断/环形缓冲)\n4. ADC (连续转换)\n5. I2C (OLED驱动)\n6. CAN (总线通信)\n\n**嵌入式设计模式:**\n- 超级循环架构\n- 中断驱动设计\n- 环形缓冲区\n- 软件消抖\n- 状态机设计\n- CRC校验算法\n- 时间戳同步","x":-782,"y":-168,"width":220,"height":400,"color":"3"},
+		{"id":"s10000000000011","type":"text","text":"### 🤖 AI/ML 核心技能树\n\n**计算机视觉:**\n1. OpenCV图像处理\n2. ImageNet归一化\n3. ResNet架构理解\n4. 迁移学习\n\n**时序建模:**\n1. RNN/LSTM/GRU原理\n2. 时序窗口选择\n3. 多模态融合(图像+速度)\n\n**训练工程:**\n1. 模仿学习范式\n2. 多任务Loss设计\n3. 加权采样策略\n4. 数据增强策略\n5. 过拟合防止\n6. 模型导出与部署","x":1782,"y":-168,"width":220,"height":400,"color":"5"},
+		{"id":"s10000000000012","type":"text","text":"### 🔗 系统集成技能树\n\n**通信协议设计:**\n1. 帧结构设计(SOF/CRC)\n2. 串口异步通信\n3. CAN总线协议\n4. 归一化映射\n\n**多线程设计:**\n1. Python threading\n2. Lock同步\n3. 生产者-消费者\n4. 线程间数据共享\n\n**系统架构:**\n1. 分层架构设计\n2. 模式状态机\n3. 时间同步机制\n4. 安全后处理管线\n5. Yaml配置驱动\n\n**工具链:**\n- STM32CubeIDE\n- PyTorch/TorchVision\n- GStreamer\n- FastAPI","x":446,"y":520,"width":300,"height":480,"color":"4"},
+		{"id":"s10000000000013","type":"text","text":"### 📚 推荐学习顺序\n\n**第1步 (打好基础):**\n→ 前置知识补全\n→ 00_项目总览 建宏观认知\n\n**第2步 (嵌入式深入):**\n→ 01_MCU固件 (外设总览)\n→ 08_代码精读 (C代码实例)\n→ 07_关键技术 (TIM/CAN原理)\n\n**第3步 (通信协议):**\n→ 04_通信协议详解\n→ 结合08代码看具体实现\n\n**第4步 (AI系统):**\n→ 02_Jetson推理端\n→ 03_模型训练端\n→ 07_关键技术 (模型原理)\n\n**第5步 (融会贯通):**\n→ 05_机械结构与ERP\n→ 06_端到端流程\n→ 读所有Canvas关系图\n\n**第6步 (动手实践):**\n→ 搭建开发环境\n→ 修改MCU代码测试\n→ 采集自己的数据集\n→ 训练自己的模型","x":995,"y":588,"width":350,"height":480,"color":"2"},
+		{"id":"s10000000000014","type":"text","text":"### ⚡ 概念依赖关系\n\n```\nC语言基础\n  └─ STM32 HAL库\n       ├─ GPIO\n       ├─ TIM (PWM / 输入捕获)\n       │    └─ RC输入解析\n       │    └─ 轮速测量\n       ├─ UART\n       │    └─ 自定义协议\n       │    └─ CRC16校验\n       ├─ CAN\n       │    └─ 伺服控制\n       └─ ADC\n            └─ 踏板/电池\n\nPython基础\n  └─ PyTorch\n       ├─ ResNet (CV基础)\n       ├─ GRU (时序模型)\n       └─ 多任务Loss\n\n电子基础\n  └─ PWM/ADC理解\n  └─ CAN差分信号\n  └─ I2C总线\n```","x":-768,"y":588,"width":300,"height":480,"color":"1"},
+		{"id":"s10000000000009","type":"file","file":"DaliangAuto学习笔记/07_关键技术点详解.md","x":40,"y":120,"width":302,"height":444,"color":"6"}
+	],
+	"edges":[
+		{"id":"e001","fromNode":"s10000000000001","fromSide":"left","toNode":"s10000000000002","toSide":"bottom","label":"前置准备"},
+		{"id":"e002","fromNode":"s10000000000002","fromSide":"bottom","toNode":"s10000000000003","toSide":"top","label":"第一步"},
+		{"id":"e003","fromNode":"s10000000000003","fromSide":"left","toNode":"s10000000000004","toSide":"top","color":"3","label":"第二步: 嵌入式"},
+		{"id":"e004","fromNode":"s10000000000003","fromSide":"bottom","toNode":"s10000000000005","toSide":"top","color":"2","label":"第三步: 通信"},
+		{"id":"e005","fromNode":"s10000000000003","fromSide":"right","toNode":"s10000000000006","toSide":"top","color":"4","label":"第四步: AI系统"},
+		{"id":"e006","fromNode":"s10000000000006","fromSide":"right","toNode":"s10000000000007","toSide":"top","color":"5","label":"模型训练"},
+		{"id":"e007","fromNode":"s10000000000004","fromSide":"bottom","toNode":"s10000000000008","toSide":"top","color":"3","label":"代码实例"},
+		{"id":"e008","fromNode":"s10000000000004","fromSide":"bottom","toNode":"s10000000000009","toSide":"top","color":"3","label":"原理深化"},
+		{"id":"e009","fromNode":"s10000000000005","fromSide":"bottom","toNode":"s10000000000009","toSide":"top","color":"2","label":"CRC/协议原理"},
+		{"id":"e010","fromNode":"s10000000000010","fromSide":"right","toNode":"s10000000000004","toSide":"left","color":"3","label":"技能覆盖"},
+		{"id":"e011","fromNode":"s10000000000011","fromSide":"left","toNode":"s10000000000007","toSide":"right","color":"5","label":"技能覆盖"},
+		{"id":"e012","fromNode":"s10000000000012","fromSide":"left","toNode":"s10000000000005","toSide":"right","color":"4","label":"通信技能"},
+		{"id":"e013","fromNode":"s10000000000012","fromSide":"left","toNode":"s10000000000006","toSide":"bottom","color":"4","label":"多线程/架构技能"}
+	]
+}

@@ -1,0 +1,31 @@
+﻿{
+	"nodes":[
+		{"id":"a100000000000101","type":"text","text":"## 🔄 系统数据流与通信协议全景\n\n训练→推理全链路数据流 / CAN / 触摸屏 / 时间同步","x":280,"y":-950,"width":350,"height":80,"color":"1"},
+		{"id":"a100000000000102","type":"text","text":"### 训练阶段 MCU→Jetson\n\n50Hz上传控制数据(转向/油门/刹车/轮速/档位), 22字节帧","x":50,"y":-780,"width":320,"height":100,"color":"2"},
+		{"id":"a100000000000103","type":"text","text":"### 训练阶段 Jetson接收\n\n后台线程解析 + deque缓存500条 + 时间戳对齐","x":50,"y":-590,"width":320,"height":100,"color":"2"},
+		{"id":"a100000000000104","type":"text","text":"### 训练阶段 数据录制\n\n10fps保存图像 + 查找对应控制值 + 线性插值","x":50,"y":-400,"width":320,"height":100,"color":"2"},
+		{"id":"a100000000000105","type":"text","text":"### 推理阶段 Jetson感知\n\nCSI摄像头30fps→每3帧预处理1帧→5帧滑动窗口","x":480,"y":-780,"width":320,"height":100,"color":"4"},
+		{"id":"a100000000000106","type":"text","text":"### 推理阶段 Jetson决策\n\nResNet18+GRU @10Hz推理→安全后处理→20Hz发指令","x":480,"y":-590,"width":320,"height":100,"color":"4"},
+		{"id":"a100000000000107","type":"text","text":"### 推理阶段 MCU执行\n\nUART中断接收→CRC校验→解析→CAN/PWM/GPIO执行","x":480,"y":-400,"width":320,"height":100,"color":"4"},
+		{"id":"a100000000000108","type":"text","text":"### CAN总线通信\n\nMCU ↔ 转向伺服 / 1Mbps / 标准ID 0x64 / 位置控制","x":50,"y":-210,"width":320,"height":100,"color":"3"},
+		{"id":"a100000000000109","type":"text","text":"### 触摸屏通信\n\nMCU ↔ VGUS屏幕 / 9600bps / 显示+按键交互","x":480,"y":-210,"width":320,"height":100,"color":"5"},
+		{"id":"a10000000000010a","type":"text","text":"### 时间同步机制\n\nMCU时间戳(1ms) + Jetson时间戳(monotonic) → 线性插值对齐","x":50,"y":-10,"width":320,"height":100,"color":"6"},
+		{"id":"a10000000000010b","type":"text","text":"### 协议对比总表\n\n训练链路 vs 推理链路 / 各协议介质速率用途","x":480,"y":-10,"width":320,"height":100,"color":"5"},
+		{"id":"b100000000000008","type":"file","file":"DaliangAuto学习笔记/04_通信协议详解.md","x":50,"y":200,"width":280,"height":60,"color":"2"},
+		{"id":"b100000000000009","type":"file","file":"DaliangAuto学习笔记/02_Jetson推理端.md","x":350,"y":200,"width":280,"height":60,"color":"4"},
+		{"id":"b100000000000010","type":"file","file":"DaliangAuto学习笔记/01_MCU固件_STM32F103.md","x":650,"y":200,"width":280,"height":60,"color":"3"},
+		{"id":"b100000000000011","type":"file","file":"DaliangAuto学习笔记/07_关键技术点详解.md","x":950,"y":200,"width":280,"height":60,"color":"6"}
+	],
+	"edges":[
+		{"id":"e101","fromNode":"a100000000000101","fromSide":"bottom","toNode":"a100000000000102","toSide":"top","label":"训练链路"},
+		{"id":"e102","fromNode":"a100000000000101","fromSide":"bottom","toNode":"a100000000000105","toSide":"top","label":"推理链路"},
+		{"id":"e103","fromNode":"a100000000000102","fromSide":"bottom","toNode":"a100000000000103","toSide":"top"},
+		{"id":"e104","fromNode":"a100000000000103","fromSide":"bottom","toNode":"a100000000000104","toSide":"top"},
+		{"id":"e105","fromNode":"a100000000000105","fromSide":"bottom","toNode":"a100000000000106","toSide":"top"},
+		{"id":"e106","fromNode":"a100000000000106","fromSide":"bottom","toNode":"a100000000000107","toSide":"top"},
+		{"id":"e107","fromNode":"a100000000000104","fromSide":"bottom","toNode":"a100000000000108","toSide":"top","label":"CAN总线"},
+		{"id":"e108","fromNode":"a100000000000107","fromSide":"bottom","toNode":"a100000000000109","toSide":"top","label":"屏幕通信"},
+		{"id":"e109","fromNode":"a100000000000104","fromSide":"right","toNode":"a10000000000010a","toSide":"left","label":"时间同步"},
+		{"id":"e10a","fromNode":"a100000000000106","fromSide":"right","toNode":"a10000000000010b","toSide":"left","label":"协议对比"}
+	]
+}

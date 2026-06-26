@@ -1,0 +1,39 @@
+{
+	"nodes":[
+		{"id":"755d91b604333b5e","type":"group","x":220,"y":-900,"width":1900,"height":1300,"label":"IIC信号组成"},
+		{"id":"35cc471cb8798c0f","type":"group","x":1620,"y":-720,"width":400,"height":640,"label":"页和列配置"},
+		{"id":"478ff79b57ec67ba","x":2420,"y":-460,"width":460,"height":510,"type":"group","label":"列地址细节"},
+		{"id":"79e8faa6d446e0ab","type":"group","x":1620,"y":-20,"width":400,"height":320,"label":"所配置页和列下写入的数据"},
+		{"id":"2b4968e0a455a545","type":"group","x":1655,"y":-660,"width":345,"height":240,"label":"页地址"},
+		{"id":"35b3e5aa69529e3e","type":"group","x":1655,"y":-360,"width":345,"height":240,"label":"列地址"},
+		{"id":"649d8552d3bd4ce6","type":"text","text":"0xB0>1011 0000","x":1675,"y":-640,"width":265,"height":60},
+		{"id":"d26202b126d2dd4d","type":"text","text":"0xB7>1011 0111","x":1675,"y":-500,"width":265,"height":60},
+		{"id":"50b44606e337c841","type":"text","text":"字节3及以后：Byte3 Byte4 ...","x":1660,"y":20,"width":320,"height":60},
+		{"id":"2ee4a41aad6b4c1a","type":"text","text":"接下来每个字节表示每列的led显示情况（1：亮；0：灭）\n\n一列共8个led，对应1Byte的8个位","x":1660,"y":120,"width":320,"height":140},
+		{"id":"5275949f253e87f8","type":"text","text":"信号字节2：信号数据类型","x":767,"y":-880,"width":250,"height":60},
+		{"id":"e2e700c19b6181dd","type":"text","text":"信号字节3：信号数据内容","x":1300,"y":-880,"width":250,"height":60},
+		{"id":"8d01ac6065a7d959","type":"text","text":"0x78>0100 1110","x":440,"y":-320,"width":250,"height":60},
+		{"id":"731e90ba95bc3eb5","type":"text","text":"0x40>0010 0000","x":1060,"y":-320,"width":250,"height":60},
+		{"id":"86fdb5d9a23647bc","type":"text","text":"0x00>0000 0000","x":1060,"y":-580,"width":250,"height":60},
+		{"id":"9e74872d77bcb463","type":"text","text":"高位(15~127)：0x1X>0001 XXXX ","x":1675,"y":-200,"width":305,"height":60},
+		{"id":"3a508a45dd8197a2","type":"text","text":"低位(0~15)：   0x0X>0000 XXXX","x":1675,"y":-340,"width":305,"height":60},
+		{"id":"15e708154a342fd4","type":"text","text":"**原col值的二进制 XXX YYYY(000 0000~111 1111)**\n\t**XXX为原col的高位 YYYY为原col的低位**\n\n**高位值的二进制数表示为001 0XXX ,其中第4位的1表示高位数据 ->0x10 + XXX(16*)**\n**低位值的二进制数表示为000 YYYY,其中第4位的0表示高位数据 ->0x00 +YYYY(16*)**","x":2440,"y":-190,"width":420,"height":220},
+		{"id":"b4328702fe7c2e18","type":"text","text":"**指令只能是 8 位（1 个字节）**\n**8 位里，高 4 位固定死了，不能动：**\n\t\t- **低 4 位指令固定以 `0000` 开头**\n\t\t- **高 4 位指令固定以 `0001` 开头**","x":2440,"y":-440,"width":400,"height":170},
+		{"id":"ea49b054e204a08c","type":"text","text":"信号字节1：IIC地址字节","x":240,"y":-880,"width":250,"height":60}
+	],
+	"edges":[
+		{"id":"f1163a3d5cb8d18d","fromNode":"5275949f253e87f8","fromSide":"bottom","toNode":"731e90ba95bc3eb5","toSide":"left","label":"数据模式"},
+		{"id":"83fd15af56f343f0","fromNode":"5275949f253e87f8","fromSide":"bottom","toNode":"86fdb5d9a23647bc","toSide":"left","label":"指令模式"},
+		{"id":"0a5bb74b20c34854","fromNode":"ea49b054e204a08c","fromSide":"right","toNode":"5275949f253e87f8","toSide":"left"},
+		{"id":"82505ebe1f704975","fromNode":"5275949f253e87f8","fromSide":"right","toNode":"e2e700c19b6181dd","toSide":"left"},
+		{"id":"e068a47360729703","fromNode":"ea49b054e204a08c","fromSide":"bottom","toNode":"8d01ac6065a7d959","toSide":"left"},
+		{"id":"6d89dcfe048dc42d","fromNode":"649d8552d3bd4ce6","fromSide":"bottom","toNode":"d26202b126d2dd4d","toSide":"top","label":"0~7"},
+		{"id":"01f22f7dc8c8a278","fromNode":"e2e700c19b6181dd","fromSide":"bottom","toNode":"35cc471cb8798c0f","toSide":"left"},
+		{"id":"f2acf34ede062330","fromNode":"e2e700c19b6181dd","fromSide":"bottom","toNode":"79e8faa6d446e0ab","toSide":"left"},
+		{"id":"434815905bd41dd3","fromNode":"86fdb5d9a23647bc","fromSide":"right","toNode":"35cc471cb8798c0f","toSide":"top"},
+		{"id":"39b405674ed0e9d7","fromNode":"731e90ba95bc3eb5","fromSide":"right","toNode":"79e8faa6d446e0ab","toSide":"top"},
+		{"id":"865eb5d77d83e26b","fromNode":"3a508a45dd8197a2","fromSide":"bottom","toNode":"9e74872d77bcb463","toSide":"top","label":"先发低位后高位"},
+		{"id":"f487d9c1ef9b86ba","fromNode":"35b3e5aa69529e3e","fromSide":"right","toNode":"15e708154a342fd4","toSide":"left","label":"设计原理"},
+		{"id":"1d87388c0b942ad4","fromNode":"35b3e5aa69529e3e","fromSide":"right","toNode":"b4328702fe7c2e18","toSide":"left","label":"设计原因"}
+	]
+}

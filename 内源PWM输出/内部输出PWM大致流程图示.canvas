@@ -1,0 +1,20 @@
+{
+	"nodes":[
+		{"id":"f0915259d587235b","x":100,"y":-340,"width":710,"height":249,"type":"group","label":"基本定时器"},
+		{"id":"4a2065eab55df622","x":-320,"y":-200,"width":360,"height":109,"type":"group","label":"时钟源"},
+		{"id":"a241448c6aabcd2f","x":120,"y":-171,"width":250,"height":60,"type":"text","text":"PSC分频器"},
+		{"id":"f36606c6a8cf2ef9","x":540,"y":-171,"width":250,"height":60,"type":"text","text":"CNT计数器"},
+		{"id":"e54710e28b8a223c","type":"text","text":"自动重装载寄存器","x":540,"y":-320,"width":250,"height":60},
+		{"id":"e26638099c02ebcc","type":"text","text":"内部时钟源 (CK_INT)","x":-295,"y":-171,"width":250,"height":60},
+		{"id":"fda8594a83c298ee","x":540,"y":0,"width":250,"height":60,"type":"text","text":"输出/比较寄存器"},
+		{"id":"bff5a226ac31c9c5","x":940,"y":0,"width":250,"height":60,"type":"text","text":"输出控制"}
+	],
+	"edges":[
+		{"id":"043c4394713cbfa1","fromNode":"e26638099c02ebcc","fromSide":"right","toNode":"a241448c6aabcd2f","toSide":"left"},
+		{"id":"ce9be6d9f86464bc","fromNode":"e54710e28b8a223c","fromSide":"bottom","toNode":"f36606c6a8cf2ef9","toSide":"top"},
+		{"id":"32e38fb7348200e6","fromNode":"a241448c6aabcd2f","fromSide":"right","toNode":"f36606c6a8cf2ef9","toSide":"left"},
+		{"id":"6c0fcc021535468b","fromNode":"f36606c6a8cf2ef9","fromSide":"right","toNode":"e54710e28b8a223c","toSide":"right","label":"更新事件"},
+		{"id":"459f2eefbc4a8db0","fromNode":"f36606c6a8cf2ef9","fromSide":"bottom","toNode":"fda8594a83c298ee","toSide":"top"},
+		{"id":"309c6105279f6769","fromNode":"fda8594a83c298ee","fromSide":"right","toNode":"bff5a226ac31c9c5","toSide":"left"}
+	]
+}

@@ -1,0 +1,29 @@
+﻿{
+	"nodes":[
+		{"id":"d200000000000001","type":"text","text":"## AutofollowModel\n\n端到端模仿学习\nResNet18 + GRU 主干","x":250,"y":-200,"width":260,"height":110,"color":"1"},
+		{"id":"d200000000000002","type":"text","text":"### 输入层\n\n5 帧图像 + 5 帧速度\n双模态时序输入","x":250,"y":10,"width":260,"height":110,"color":"4"},
+		{"id":"d200000000000003","type":"text","text":"### 视觉分支\n\n每帧经 ResNet18\n提取 512 维视觉特征","x":10,"y":200,"width":240,"height":110,"color":"5"},
+		{"id":"d200000000000004","type":"text","text":"### 速度分支\n\n标量速度 → FC → 16d\n运动状态嵌入向量","x":510,"y":200,"width":240,"height":110,"color":"5"},
+		{"id":"d200000000000005","type":"text","text":"### 特征融合\n\n视觉 512d + 速度 16d\n= 528d 联合特征向量","x":250,"y":390,"width":260,"height":110,"color":"2"},
+		{"id":"d200000000000006","type":"text","text":"### GRU 时序模块\n\n5 时间步 GRU 循环\n→ 256d 隐状态输出","x":250,"y":580,"width":260,"height":110,"color":"2"},
+		{"id":"d200000000000007","type":"text","text":"### 输出 Head\n\nMLP: 256→128→64→4\nsteer / throttle\nbrake / target_valid","x":250,"y":770,"width":260,"height":130,"color":"1"},
+		{"id":"d200000000000008","type":"text","text":"### 安全后处理\n\n低通滤波 / 死区 / 限幅\n刹车迟滞 + 油门缓升\n保障执行安全性","x":60,"y":970,"width":240,"height":130,"color":"3"},
+		{"id":"d200000000000009","type":"text","text":"### 损失函数\n\nSmoothL1(转向, 油门)\n+ BCE(刹车, 有效性)\n多任务加权组合","x":490,"y":970,"width":240,"height":130,"color":"6"},
+		{"id":"d20000000000000a","type":"text","text":"### 训练策略\n\nAdamW + 小学习率微调\nColorJitter 数据增强\n8:1 加权采样平衡","x":490,"y":1170,"width":240,"height":130,"color":"6"},
+		{"id":"d100000000000009","type":"file","file":"DaliangAuto学习笔记/03_模型训练端.md","x":35,"y":1380,"width":280,"height":60,"color":"5"},
+		{"id":"d100000000000010","type":"file","file":"DaliangAuto学习笔记/02_Jetson推理端.md","x":420,"y":1380,"width":280,"height":60,"color":"4"},
+		{"id":"d100000000000011","type":"file","file":"DaliangAuto学习笔记/07_关键技术点详解.md","x":820,"y":1380,"width":280,"height":60,"color":"6"}
+	],
+	"edges":[
+		{"id":"e100","fromNode":"d200000000000001","fromSide":"bottom","toNode":"d200000000000002","toSide":"top","label":"端到端模仿学习"},
+		{"id":"e101","fromNode":"d200000000000002","fromSide":"bottom","toNode":"d200000000000003","toSide":"top","label":"图像序列"},
+		{"id":"e102","fromNode":"d200000000000002","fromSide":"bottom","toNode":"d200000000000004","toSide":"top","label":"速度序列"},
+		{"id":"e103","fromNode":"d200000000000003","fromSide":"right","toNode":"d200000000000005","toSide":"left","label":"512d 特征"},
+		{"id":"e104","fromNode":"d200000000000004","fromSide":"left","toNode":"d200000000000005","toSide":"right","label":"16d 特征"},
+		{"id":"e105","fromNode":"d200000000000005","fromSide":"bottom","toNode":"d200000000000006","toSide":"top","label":"时序建模"},
+		{"id":"e106","fromNode":"d200000000000006","fromSide":"bottom","toNode":"d200000000000007","toSide":"top","label":"256d 隐状态"},
+		{"id":"e107","fromNode":"d200000000000007","fromSide":"bottom","toNode":"d200000000000008","toSide":"top","label":"推理输出"},
+		{"id":"e108","fromNode":"d200000000000007","fromSide":"bottom","toNode":"d200000000000009","toSide":"top","label":"训练损失"},
+		{"id":"e109","fromNode":"d200000000000009","fromSide":"bottom","toNode":"d20000000000000a","toSide":"top","label":"梯度更新"}
+	]
+}

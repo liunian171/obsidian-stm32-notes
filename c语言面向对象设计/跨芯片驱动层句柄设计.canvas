@@ -1,0 +1,29 @@
+{
+	"nodes":[
+		{"id":"7086852db78eec83","type":"group","x":-633,"y":-780,"width":628,"height":203,"label":"公共参数"},
+		{"id":"4740ffe303af8e23","type":"group","x":-633,"y":-302,"width":290,"height":260,"label":"句柄结构"},
+		{"id":"02a21a622409e355","type":"group","x":-320,"y":-302,"width":290,"height":260,"label":"各结构体功能"},
+		{"id":"4417fc7f5da97f07","type":"text","text":"私有参数,状态位,各函数接口","x":-613,"y":-282,"width":250,"height":60},
+		{"id":"92726b2701681d0d","type":"text","text":"功能实现函数","x":-613,"y":-202,"width":250,"height":60},
+		{"id":"b940bb0a3fb60220","type":"text","text":"基本操作函数","x":-613,"y":-122,"width":250,"height":60},
+		{"id":"8fca326d06af0f5f","type":"text","text":"厂商的各类固件库","x":-613,"y":-32,"width":250,"height":60},
+		{"id":"446069736e9e2b99","type":"text","text":"对外开放","x":-300,"y":-282,"width":250,"height":60},
+		{"id":"7cae8d34bffaba24","type":"text","text":"使用基本操作函数实现相关功能","x":-300,"y":-202,"width":250,"height":60},
+		{"id":"06461e28d32a4312","type":"text","text":"针对不同厂商hal库进行封装,修改","x":-300,"y":-122,"width":250,"height":60},
+		{"id":"a1d34dccbd75725d","type":"text","text":"底层公共参数结构体","x":-613,"y":-760,"width":250,"height":60},
+		{"id":"8b4be7f5a0fbec65","type":"text","text":"同一驱动层各对象检查使用条件,进行修改","x":-275,"y":-657,"width":250,"height":60},
+		{"id":"d0c122725a2ba4ad","type":"text","text":"同一驱动层各对象可访问","x":-275,"y":-760,"width":250,"height":60},
+		{"id":"8ace7271f9c71286","x":-1000,"y":-122,"width":250,"height":60,"type":"text","text":"函数指针结构体"}
+	],
+	"edges":[
+		{"id":"210697a1d78f85c5","fromNode":"b940bb0a3fb60220","fromSide":"top","toNode":"92726b2701681d0d","toSide":"bottom"},
+		{"id":"4edc88ed2dcd970c","fromNode":"92726b2701681d0d","fromSide":"top","toNode":"4417fc7f5da97f07","toSide":"bottom"},
+		{"id":"54a461cdbaeef12f","fromNode":"8fca326d06af0f5f","fromSide":"top","toNode":"b940bb0a3fb60220","toSide":"bottom"},
+		{"id":"e2fa4937e1e48ad1","fromNode":"4417fc7f5da97f07","fromSide":"right","toNode":"446069736e9e2b99","toSide":"left","toEnd":"none"},
+		{"id":"5497d25e4cd2556e","fromNode":"92726b2701681d0d","fromSide":"right","toNode":"7cae8d34bffaba24","toSide":"left","toEnd":"none"},
+		{"id":"791ba667a613abd2","fromNode":"b940bb0a3fb60220","fromSide":"right","toNode":"06461e28d32a4312","toSide":"left","toEnd":"none"},
+		{"id":"c8058a05d00d78ef","fromNode":"a1d34dccbd75725d","fromSide":"right","toNode":"d0c122725a2ba4ad","toSide":"left"},
+		{"id":"2d2e60ace1ddcec1","fromNode":"a1d34dccbd75725d","fromSide":"right","toNode":"8b4be7f5a0fbec65","toSide":"left"},
+		{"id":"82a7a0a4ff52b6ba","fromNode":"8ace7271f9c71286","fromSide":"right","toNode":"b940bb0a3fb60220","toSide":"left"}
+	]
+}

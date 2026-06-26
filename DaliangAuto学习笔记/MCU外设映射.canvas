@@ -1,0 +1,35 @@
+﻿{
+	"nodes":[
+		{"id":"a200000000000001","type":"text","text":"## STM32F103RCT6 外设映射总览","x":460,"y":-225,"width":300,"height":80,"color":"1"},
+		{"id":"a200000000000002","type":"text","text":"### CAN1\nPA11(RX) PA12(TX)\n→ 转向伺服\n1Mbps / 标准ID 0x64","x":-184,"y":60,"width":250,"height":120,"color":"2"},
+		{"id":"a200000000000003","type":"text","text":"### USART1\nPA9(TX) PA10(RX)\n→ Jetson\n115200bps / 22字节协议","x":289,"y":60,"width":250,"height":120,"color":"4"},
+		{"id":"a200000000000004","type":"text","text":"### USART2\nPA2(TX) PA3(RX)\n→ VGUS触摸屏\n9600bps","x":761,"y":60,"width":250,"height":110,"color":"5"},
+		{"id":"a200000000000005","type":"text","text":"### I2C1\nPB6(SCL) PB7(SDA)\n→ OLED SSD1306\n100KHz","x":1230,"y":60,"width":240,"height":110,"color":"5"},
+		{"id":"a200000000000006","type":"text","text":"### TIM2\nPA0(CH1) PA1(CH2)\n→ RC接收机\nPWM输入捕获 / 1us分辨率","x":-184,"y":340,"width":250,"height":120,"color":"3"},
+		{"id":"a200000000000007","type":"text","text":"### TIM3\nPA6(CH1) PA7(CH2)\n→ 轮毂电机\nPWM输出 1KHz","x":289,"y":340,"width":240,"height":110,"color":"3"},
+		{"id":"a200000000000008","type":"text","text":"### TIM4\nPB8(CH3) PB9(CH4)\n→ 霍尔传感器\n轮速捕获","x":761,"y":340,"width":240,"height":110,"color":"3"},
+		{"id":"a200000000000009","type":"text","text":"### ADC1\nPB0(踏板) PC2(电池)\n→ 模拟量采集\n连续转换","x":1230,"y":340,"width":240,"height":110,"color":"2"},
+		{"id":"a200000000000010","type":"text","text":"### GPIO输出\nPB12(N) PB13(R)\nPB14(S) PB15(B)\n开漏输出驱动","x":-184,"y":620,"width":250,"height":120,"color":"6"},
+		{"id":"a200000000000011","type":"text","text":"### GPIO输入\nPA8(P) PB2(R)\nPB4(D) PB3(刹车)\n档位/刹车开关","x":289,"y":620,"width":250,"height":120,"color":"6"},
+		{"id":"a200000000000012","type":"text","text":"### TIM8\nPC6-9\n混合输入捕获+PWM\n扩展","x":761,"y":620,"width":240,"height":110,"color":"3"},
+		{"id":"a200000000000013","type":"text","text":"### 预留串口\nUSART3/UART4/UART5\n未使用 / 未来扩展","x":1230,"y":620,"width":240,"height":110,"color":"6"},
+		{"id":"a100000000000013","type":"file","file":"DaliangAuto学习笔记/01_MCU固件_STM32F103.md","x":-184,"y":920,"width":280,"height":60,"color":"3"},
+		{"id":"a100000000000014","type":"file","file":"DaliangAuto学习笔记/08_STM32代码精读.md","x":289,"y":920,"width":280,"height":60,"color":"3"},
+		{"id":"a100000000000015","type":"file","file":"DaliangAuto学习笔记/04_通信协议详解.md","x":761,"y":920,"width":280,"height":60,"color":"2"},
+		{"id":"a100000000000016","type":"file","file":"DaliangAuto学习笔记/07_关键技术点详解.md","x":1234,"y":920,"width":280,"height":60,"color":"6"}
+	],
+	"edges":[
+		{"id":"e001","fromNode":"a200000000000001","fromSide":"bottom","toNode":"a200000000000002","toSide":"top","label":""},
+		{"id":"e002","fromNode":"a200000000000001","fromSide":"bottom","toNode":"a200000000000003","toSide":"top","label":""},
+		{"id":"e003","fromNode":"a200000000000001","fromSide":"bottom","toNode":"a200000000000004","toSide":"top","label":""},
+		{"id":"e004","fromNode":"a200000000000001","fromSide":"bottom","toNode":"a200000000000005","toSide":"top","label":""},
+		{"id":"e005","fromNode":"a200000000000001","fromSide":"bottom","toNode":"a200000000000006","toSide":"top","label":""},
+		{"id":"e006","fromNode":"a200000000000001","fromSide":"bottom","toNode":"a200000000000007","toSide":"top","label":""},
+		{"id":"e007","fromNode":"a200000000000001","fromSide":"bottom","toNode":"a200000000000008","toSide":"top","label":""},
+		{"id":"e008","fromNode":"a200000000000001","fromSide":"bottom","toNode":"a200000000000009","toSide":"top","label":""},
+		{"id":"e009","fromNode":"a200000000000001","fromSide":"bottom","toNode":"a200000000000010","toSide":"top","label":""},
+		{"id":"e010","fromNode":"a200000000000001","fromSide":"bottom","toNode":"a200000000000011","toSide":"top","label":""},
+		{"id":"e011","fromNode":"a200000000000001","fromSide":"bottom","toNode":"a200000000000012","toSide":"top","label":""},
+		{"id":"e012","fromNode":"a200000000000001","fromSide":"bottom","toNode":"a200000000000013","toSide":"top","label":""}
+	]
+}

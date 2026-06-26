@@ -1,0 +1,37 @@
+{
+	"nodes":[
+		{"id":"group-main-080","type":"group","x":643,"y":1120,"width":675,"height":980,"color":"1","label":"主循环 Main Loop"},
+		{"id":"group-sensors-010","type":"group","x":-320,"y":10,"width":360,"height":765,"color":"2","label":"传感器 Sensors"},
+		{"id":"group-lem-060","type":"group","x":240,"y":-800,"width":260,"height":500,"color":"6","label":"LEM 重入线模块 (最高优先级)"},
+		{"id":"group-oam-030","type":"group","x":240,"y":250,"width":260,"height":285,"color":"5","label":"OAM 避障模块"},
+		{"id":"group-lfm-020","type":"group","x":240,"y":640,"width":260,"height":270,"color":"4","label":"LFM 循线模块 (最低优先级)"},
+		{"id":"group-ofm-040","type":"group","x":240,"y":-114,"width":260,"height":248,"color":"3","label":"OFM 沿障行走模块"},
+		{"id":"group-llm-050","type":"group","x":240,"y":1000,"width":260,"height":220,"color":"1","label":"LLM 离线检测模块"},
+		{"id":"group-motors-070","type":"group","x":953,"y":5,"width":200,"height":195,"color":"6","label":"执行器 Actuators"},
+		{"id":"main-detail-081","type":"text","text":"初始化设备 → 循环:\n  1. wb_robot_step(32ms)\n  2. 检测模式切换 (仿真/真实) → 复位所有模块\n  3. 读取传感器值 (偏移校正)\n  4. 速度归零\n  5. 调用 LFM (当前仅循线)\n  6. 设置电机速度\n\n包容架构: 当前仅 LFM 生效，可逐步加入 OAM/OFM/LLEM","x":683,"y":1150,"width":605,"height":270,"color":"1"},
+		{"id":"param-table-090","type":"text","text":"关键参数表\n─────────────────\nTIME_STEP       = 32ms\nLFM_FWD_SPEED   = 200\nLFM_K           = 0.4\nOAM_THRESHOLD   = 100\nOAM_FWD_SPEED   = 150\nOFM_DELTA       = 150\nLEM_FWD_SPEED   = 100\nLEM_THRESHOLD   = 500\nGS_WHITE        = 900","x":683,"y":1740,"width":605,"height":302,"color":"1"},
+		{"id":"note-bottom-100","type":"text","text":"包容架构 (Brooks, 1986)\n\n行为被组织为优先级层，高层可抑制低层输出，\n低层在高层不激活时作为默认行为。\n\n当前实现: 仅 LFM 一层\n扩展方向: 加入 OAM→OFM→LEM 优先级链\n实现完整 \"循线→遇障绕行→回线\" 闭环","x":683,"y":1460,"width":605,"height":232,"color":"1"},
+		{"id":"sensor-ps-011","type":"text","text":"红外距离传感器\nPS0 (右前方 0°)\nPS1 (右前方 45°)\nPS2 (右方 90°)\nPS3 (右后方)\nPS4 (左后方)\nPS5 (左方 90°)\nPS6 (左前方 45°)\nPS7 (左前方 0°)","x":-280,"y":40,"width":260,"height":260,"color":"2"},
+		{"id":"sensor-gs-012","type":"text","text":"地面灰度传感器\ngs0 (左)\ngs1 (中)\ngs2 (右)","x":-280,"y":360,"width":260,"height":140,"color":"2"},
+		{"id":"sensor-offset-013","type":"text","text":"传感器偏移量\n仿真模式: 300\n真实模式: 各异\n见 PS_OFFSET_REALITY","x":-280,"y":600,"width":260,"height":140,"color":"3"},
+		{"id":"motor-detail-071","type":"text","text":"左轮电机\n右轮电机\n速度控制模式\n系数 0.00628","x":968,"y":45,"width":170,"height":125,"color":"6"},
+		{"id":"note-priority-002","type":"text","text":"优先级说明\n高优先级模块可抑制低优先级模块输出\nLEM > OFM > OAM > LFM\n[包容架构]","x":-270,"y":-510,"width":250,"height":200,"color":"1"},
+		{"id":"oam-detail-031","type":"text","text":"累加前方 PS 值 (左右分别求和)\n超过阈值 100 激活\n判断障碍物侧别 (oam_side)\n加权差速转向:\n侧方 *0.2 + 侧前 *0.9 + 前方 *1.2\n限幅 ±600","x":255,"y":280,"width":230,"height":240,"color":"5"},
+		{"id":"lfm-detail-021","type":"text","text":"Delta = GS_R - GS_L\nL_speed = FWD - K * Delta\nR_speed = FWD + K * Delta\nForwardSpeed = 200, K = 0.4","x":255,"y":680,"width":230,"height":195,"color":"4"},
+		{"id":"llm-detail-051","type":"text","text":"检测 side 上升沿 (-1->0/1)\n监控地面传感器 > 800\n判定完全离线\n[半成品，待补充]","x":255,"y":1040,"width":230,"height":150,"color":"1"},
+		{"id":"lem-state-061","type":"text","text":"四状态有限状态机:\n\n① STANDBY (待机)\n    lem_active = FALSE\n\n② LOOKING_FOR_LINE (寻线)\n    等待 GS_Side < 500\n\n③ LINE_DETECTED (已检测)\n    对侧传感器黑→白下降沿\n    → 已越过黑线宽度\n\n④ ON_LINE (已回线)\n    oam_reset = TRUE\n    → 返回 STANDBY","x":255,"y":-760,"width":230,"height":420,"color":"6"},
+		{"id":"ofm-detail-041","type":"text","text":"侧左 → 左转 (Left=-150, Right=150)\n侧右 → 右转 (Left=150, Right=-150)\n无侧 → 停止输出","x":255,"y":-74,"width":230,"height":160,"color":"3"}
+	],
+	"edges":[
+		{"id":"edge-ps-oam","fromNode":"sensor-ps-011","fromSide":"right","toNode":"group-oam-030","toSide":"left","label":"ps_value[]"},
+		{"id":"edge-gs-lfm","fromNode":"sensor-gs-012","fromSide":"right","toNode":"group-lfm-020","toSide":"left","label":"gs_value[]"},
+		{"id":"edge-gs-lem","fromNode":"sensor-gs-012","fromSide":"right","toNode":"group-lem-060","toSide":"left"},
+		{"id":"edge-gs-llm","fromNode":"sensor-gs-012","fromSide":"right","toNode":"group-llm-050","toSide":"left"},
+		{"id":"edge-lfm-motor","fromNode":"group-lfm-020","fromSide":"right","toNode":"group-motors-070","toSide":"left","label":"lfm_speed[]"},
+		{"id":"edge-oam-motor","fromNode":"group-oam-030","fromSide":"right","toNode":"group-motors-070","toSide":"left","label":"oam_speed[]"},
+		{"id":"edge-ofm-motor","fromNode":"group-ofm-040","fromSide":"right","toNode":"group-motors-070","toSide":"left","label":"ofm_speed[]"},
+		{"id":"edge-lem-motor","fromNode":"group-lem-060","fromSide":"right","toNode":"group-motors-070","toSide":"left","label":"lem_speed[]"},
+		{"id":"edge-llm-notify","fromNode":"group-llm-050","fromSide":"right","toNode":"group-main-080","toSide":"top","label":"llm_active"},
+		{"id":"edge-oam-lem-reset","fromNode":"group-lem-060","fromSide":"right","toNode":"group-oam-030","toSide":"right","label":"oam_reset"}
+	]
+}

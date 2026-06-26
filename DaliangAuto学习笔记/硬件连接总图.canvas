@@ -1,0 +1,33 @@
+﻿{
+	"nodes":[
+		{"id":"a100000000000001","type":"text","text":"### Jetson Orin Nano\n\n主控算力单元\nUART⇄STM32 | CSI-2→摄像头","x":350,"y":-650,"width":280,"height":120,"color":"5"},
+		{"id":"a100000000000002","type":"text","text":"### CSI Camera IMX219\n\n视觉感知\nCSI-2⇄Jetson Orin Nano","x":750,"y":-650,"width":250,"height":110,"color":"4"},
+		{"id":"a100000000000003","type":"text","text":"### STM32F103控制板\n\n执行控制中枢\nCAN UART PWM GPIO I2C ADC","x":350,"y":-400,"width":280,"height":130,"color":"2"},
+		{"id":"a100000000000004","type":"text","text":"### RC遥控接收机\n\n遥控输入\nPWM→STM32 (TIM2 CH1/CH2)","x":0,"y":-400,"width":250,"height":110,"color":"3"},
+		{"id":"a100000000000005","type":"text","text":"### 直流伺服电机\n\n转向执行器\nCAN⇄STM32 | 前轮转向控制","x":750,"y":-520,"width":260,"height":110,"color":"3"},
+		{"id":"a100000000000006","type":"text","text":"### 无刷轮毂电机×2\n\n后轮驱动\nPWM←STM32 | 霍尔反馈→STM32","x":750,"y":-370,"width":260,"height":110,"color":"3"},
+		{"id":"a100000000000007","type":"text","text":"### 刹车电缸\n\n制动执行器\nGPIO←STM32 | 电动推杆刹车","x":750,"y":-220,"width":250,"height":110,"color":"3"},
+		{"id":"a100000000000008","type":"text","text":"### VGUS触摸屏\n\n人机交互界面\nUART⇄STM32 | 模式·速度·电量","x":0,"y":-100,"width":250,"height":110,"color":"5"},
+		{"id":"a100000000000009","type":"text","text":"### OLED显示屏\n\n调试输出\nI2C⇄STM32 | SSD1306 128×64","x":350,"y":-100,"width":240,"height":100,"color":"1"},
+		{"id":"a10000000000000a","type":"text","text":"### 电源系统\n\n供电拓扑\n5V→STM32/VGUS/OLED\n高压→Jetson/电机/电缸","x":800,"y":-70,"width":280,"height":120,"color":"6"},
+		{"id":"g100000000000011","type":"file","file":"DaliangAuto学习笔记/01_MCU固件_STM32F103.md","x":250,"y":250,"width":280,"height":60,"color":"3"},
+		{"id":"g100000000000012","type":"file","file":"DaliangAuto学习笔记/05_机械结构与ERP.md","x":600,"y":250,"width":280,"height":60,"color":"6"},
+		{"id":"g100000000000013","type":"file","file":"DaliangAuto学习笔记/07_关键技术点详解.md","x":950,"y":250,"width":280,"height":60,"color":"6"}
+	],
+	"edges":[
+		{"id":"e000000000000001","fromNode":"a100000000000001","fromSide":"right","toNode":"a100000000000002","toSide":"left","label":"CSI-2"},
+		{"id":"e000000000000002","fromNode":"a100000000000001","fromSide":"bottom","toNode":"a100000000000003","toSide":"top","label":"UART (PA9/PA10)"},
+		{"id":"e000000000000003","fromNode":"a100000000000004","fromSide":"right","toNode":"a100000000000003","toSide":"left","label":"TIM2 IC (PA0/PA1)"},
+		{"id":"e000000000000004","fromNode":"a100000000000003","fromSide":"right","toNode":"a100000000000005","toSide":"left","label":"CAN (PA11/PA12)"},
+		{"id":"e000000000000005","fromNode":"a100000000000003","fromSide":"right","toNode":"a100000000000006","toSide":"left","label":"PWM (PA6/PA7)"},
+		{"id":"e000000000000006","fromNode":"a100000000000003","fromSide":"right","toNode":"a100000000000007","toSide":"left","label":"GPIO (PB12/PB15)"},
+		{"id":"e000000000000007","fromNode":"a100000000000003","fromSide":"bottom","toNode":"a100000000000008","toSide":"top","label":"UART (PA2/PA3)"},
+		{"id":"e000000000000008","fromNode":"a100000000000003","fromSide":"bottom","toNode":"a100000000000009","toSide":"top","label":"I2C (PB6/PB7)"},
+		{"id":"e000000000000009","fromNode":"a10000000000000a","fromSide":"left","toNode":"a100000000000003","toSide":"right","label":"5V供电"},
+		{"id":"e00000000000000a","fromNode":"a10000000000000a","fromSide":"left","toNode":"a100000000000001","toSide":"right","label":"宽压供电"},
+		{"id":"e00000000000000b","fromNode":"a10000000000000a","fromSide":"top","toNode":"a100000000000006","toSide":"bottom","label":"高压直供"},
+		{"id":"e00000000000000c","fromNode":"a10000000000000a","fromSide":"top","toNode":"a100000000000005","toSide":"bottom","label":"供电"},
+		{"id":"e00000000000000d","fromNode":"a10000000000000a","fromSide":"top","toNode":"a100000000000007","toSide":"bottom","label":"供电"},
+		{"id":"e00000000000000e","fromNode":"a10000000000000a","fromSide":"left","toNode":"a100000000000008","toSide":"bottom","label":"5V"}
+	]
+}

@@ -1,0 +1,38 @@
+{
+	"nodes":[
+		{"id":"5f67890a1b2c3d4e","type":"group","x":-350,"y":200,"width":420,"height":500,"color":"4","label":"四、与 ROS 组的通信协议与接口对接"},
+		{"id":"0a1b2c3d4e5f0123","type":"group","x":150,"y":200,"width":420,"height":500,"color":"6","label":"五、装配、联调与交付"},
+		{"id":"0a1b2c3d4e5f6789","type":"group","x":300,"y":-350,"width":420,"height":470,"color":"3","label":"三、底层驱动程序开发"},
+		{"id":"a1b2c3d4e5f67890","type":"group","x":-600,"y":-350,"width":400,"height":470,"color":"1","label":"一、核心部件选型与参数确认"},
+		{"id":"f67890a1b2c3d4e5","type":"group","x":-150,"y":-350,"width":400,"height":470,"color":"2","label":"二、硬件设计与线束制作"},
+		{"id":"6f0ad84f44ce9c17","type":"text","text":"# 嵌入式小车项目 TODO\n\n下位机底层硬件系统 — 为 ROS 组和 AI 组提供可靠数据与控制接口","x":-50,"y":-500,"width":400,"height":80,"color":"5"},
+		{"id":"b2c3d4e5f67890a1","type":"text","text":"下位机选型\nSTM32 F103/F407，串口/定时器/I2C/SPI 接口足够","x":-575,"y":-320,"width":350,"height":90},
+		{"id":"c3d4e5f67890a1b2","type":"text","text":"电池与电源方案\n2S/3S 锂电池 → DC-DC 5V → LDO 3.3V，保护板+保险","x":-575,"y":-220,"width":350,"height":80},
+		{"id":"d4e5f67890a1b2c3","type":"text","text":"驱动电机与转向\nAB相编码器直流减速电机，大扭矩舵机/差速转向","x":-575,"y":-130,"width":350,"height":90},
+		{"id":"7890a1b2c3d4e5f6","type":"text","text":"原理图与 PCB/洞洞板\n集中接口排布，大电流加宽布线，急停按钮接入","x":-125,"y":-300,"width":350,"height":90},
+		{"id":"1b2c3d4e5f67890a","type":"text","text":"电机驱动与编码器\nPWM控制 + 编码器模式测速 + PID速度闭环","x":325,"y":-300,"width":370,"height":70},
+		{"id":"2c3d4e5f67890a1b","type":"text","text":"传感器数据采集\n灰度 GPIO/ADC · IMU I2C/SPI+DMP · OLED SSD1306","x":325,"y":-210,"width":370,"height":90},
+		{"id":"1b2c3d4e5f01234a","type":"text","text":"装配验证\n配合建模组安装，螺丝孔位匹配，线束固定牢固","x":175,"y":250,"width":370,"height":90},
+		{"id":"90a1b2c3d4e5f678","type":"text","text":"\"安全不烧的板子\" 防护\n自恢复保险丝·防反接·采样电阻·逐级上电检查","x":-125,"y":-40,"width":350,"height":80},
+		{"id":"890a1b2c3d4e5f67","type":"text","text":"电源与线束图\n电源树、线色/线径/端子型号，可靠对插连接器","x":-125,"y":-160,"width":350,"height":100},
+		{"id":"e5f67890a1b2c3d4","type":"text","text":"传感器\n编码器·灰度传感器·IMU(MPU6050)\n摄像头(直连上位机)·OLED(SSD1306)","x":-575,"y":-10,"width":350,"height":110},
+		{"id":"4e5f67890a1b2c3d","type":"text","text":"基础安全机制\n急停·通信超时保护(500ms)·故障上报(堵转/欠压)","x":325,"y":0,"width":370,"height":100},
+		{"id":"3d4e5f67890a1b2c","type":"text","text":"通信接口（串口）\nUART DMA+空闲中断，自定义协议帧+CRC校验","x":325,"y":-100,"width":370,"height":80},
+		{"id":"890a1b2c3d4e5f01","type":"text","text":"传输频率与同步\n传感器 50-100Hz 上传，指令 50Hz 下发，TF 坐标系对齐","x":-325,"y":440,"width":370,"height":90},
+		{"id":"67890a1b2c3d4e5f","type":"text","text":"物理层设置\n波特率 115200/921600、数据位/停止位/校验位","x":-325,"y":235,"width":370,"height":80},
+		{"id":"7890a1b2c3d4e5f0","type":"text","text":"自定义数据包格式\n帧头+功能码+长度+数据+校验，上下行指令分离","x":-325,"y":340,"width":370,"height":80},
+		{"id":"90a1b2c3d4e5f012","type":"text","text":"交付文档\n《串口通信协议及 ROS 接口说明》","x":-325,"y":560,"width":370,"height":60},
+		{"id":"2c3d4e5f01234a5b","type":"text","text":"与 ROS 组联调\nteleop 速度指令测试，rostopic echo 检查数据连续性","x":175,"y":360,"width":370,"height":90},
+		{"id":"4e5f01234a5b6c7d","type":"text","text":"最终交付物\n源码·协议文档·电源线束图·装配照片与测试记录","x":175,"y":575,"width":370,"height":90},
+		{"id":"3d4e5f01234a5b6c","type":"text","text":"与 AI 组兜底逻辑核对\n紧急障碍时串口指令减速/停车","x":175,"y":480,"width":370,"height":80}
+	],
+	"edges":[
+		{"id":"aabbccddeeff0011","fromNode":"6f0ad84f44ce9c17","fromSide":"bottom","toNode":"a1b2c3d4e5f67890","toSide":"top","label":"选型先行"},
+		{"id":"aabbccddeeff0022","fromNode":"6f0ad84f44ce9c17","fromSide":"bottom","toNode":"f67890a1b2c3d4e5","toSide":"top","label":"硬件基础"},
+		{"id":"aabbccddeeff0033","fromNode":"6f0ad84f44ce9c17","fromSide":"bottom","toNode":"0a1b2c3d4e5f6789","toSide":"top","label":"驱动核心"},
+		{"id":"aabbccddeeff0044","fromNode":"a1b2c3d4e5f67890","fromSide":"right","toNode":"f67890a1b2c3d4e5","toSide":"left"},
+		{"id":"aabbccddeeff0055","fromNode":"f67890a1b2c3d4e5","fromSide":"right","toNode":"0a1b2c3d4e5f6789","toSide":"left"},
+		{"id":"aabbccddeeff0066","fromNode":"0a1b2c3d4e5f6789","fromSide":"bottom","toNode":"5f67890a1b2c3d4e","toSide":"top","label":"打通通信"},
+		{"id":"aabbccddeeff0077","fromNode":"5f67890a1b2c3d4e","fromSide":"right","toNode":"0a1b2c3d4e5f0123","toSide":"left","label":"最终联调"}
+	]
+}

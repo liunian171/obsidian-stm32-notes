@@ -1,0 +1,13 @@
+{
+	"nodes":[
+		{"id":"cc74e72cb4014baa","x":20,"y":-406,"width":300,"height":486,"type":"group","label":"外设模块"},
+		{"id":"a965533cd39ea2a6","type":"text","text":"灰度传感器","x":40,"y":-300,"width":250,"height":60},
+		{"id":"c349856e69bc572b","type":"text","text":"直流减速电机","x":40,"y":-386,"width":250,"height":56},
+		{"id":"7f534dfdeeab3540","type":"text","text":"采用差速转向","x":460,"y":-390,"width":250,"height":60},
+		{"id":"396f7dcfebdab741","type":"text","text":"电压保护板","x":460,"y":-280,"width":250,"height":60},
+		{"id":"27b70e5eb62efd9a","type":"text","text":"编码器","x":40,"y":-200,"width":250,"height":60},
+		{"id":"dfc21bec52f646c3","type":"text","text":"摄像头","x":40,"y":-100,"width":250,"height":60},
+		{"id":"215a03e7e2016e22","type":"text","text":"IMU","x":40,"y":0,"width":250,"height":60}
+	],
+	"edges":[]
+}
