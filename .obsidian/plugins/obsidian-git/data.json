@@ -1,0 +1,22 @@
+{
+  "commitMessage": "笔记备份: {{date}}",
+  "autoCommitMessage": "自动备份: {{date}}",
+  "commitDateFormat": "YYYY-MM-DD HH:mm:ss",
+  "autoSaveInterval": 10,
+  "autoPushInterval": 30,
+  "autoPullInterval": 30,
+  "autoPullOnBoot": true,
+  "disablePush": false,
+  "pullBeforePush": true,
+  "disablePopups": false,
+  "listChangedFiles": true,
+  "showStatusBar": true,
+  "updateSubmodules": false,
+  "syncMethod": "merge",
+  "customMessageOnAutoCommit": false,
+  "autoCommitDelay": 0,
+  "autoPushDelay": 0,
+  "autoPullDelay": 0,
+  "autoSaveTimer": 300,
+  "commitMessageHistory": []
+}
